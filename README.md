@@ -63,6 +63,8 @@ class VoteManager(models.Manager):
       </form >
 ```
 
+![страница о фильме с формой для голосования](https://github.com/stasyao/mymdb/blob/master/images_for_readme/movie_detail.png.JPG)
+
 ### Работа с моделями
 
 ```python
