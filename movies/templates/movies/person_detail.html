@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ object.first_name }}
+  {{ object.last_name }}
+{% endblock %}
+
+{% block main %}
+  <h1>{{ object }}</h1>
+  <h2>Актер</h2>
+  <ul >
+    {% for role in object.role_set.all %}
+      <li >
+        <a href="{% url 'movies:MovieDetail' role.movie.id %}">
+          {{ role.movie }}
+        </a>:
+        {{ role.name }}
+      </li >
+    {% endfor %}
+  </ul >
+  <h2>Автор сценария</h2>
+  <ul >
+    {% for movie in object.scriptwriters.all %}
+      <li >
+        <a href="{% url 'movies:MovieDetail' movie.id %}">{{ movie }}</a >
+      </li >
+    {% endfor %}
+  </ul >
+  <h2>Директор картины</h2>
+  <ul >
+    {% for movie in object.directed.all %}
+      <li >
+        <a href="{% url 'movies:MovieDetail' movie.id %}" >
+          {{ movie }}
+        </a >
+      </li >
+    {% endfor %}
+  </ul >
+
+{% endblock %}

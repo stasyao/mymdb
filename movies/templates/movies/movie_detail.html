@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ object.title }} - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+  <h1>{{ object }}</h1>
+  <p class="lead">{{ object.plot }}</p>
+{% endblock %}
+
+{% block sidebar %}
+  <div >
+    <h2 >
+      Оценка пользователей сайта: {{ object.score|default_if_none:"TBD" }}
+    </h2 >
+  </div>
+  <div>
+  {% comment %} появляется, если пользователь авторизован {% endcomment %}
+    {% if vote_form %}
+      <form
+          method="post"
+          action="{{ vote_form_url }}"> 
+        {% csrf_token %}
+        {{ vote_form.as_p }}
+        <button class="btn btn-primary">
+          Голосовать
+        </button >
+      </form >
+    {% else %}
+      <p >
+        Войдите, чтобы проголосовать за эту картину
+      </p >
+    {% endif %}
+  </div >
+
+{% endblock %}

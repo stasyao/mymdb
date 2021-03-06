@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <h1>Зарегистрироваться на MyMDB</h1>
+  <form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button
+        type="submit"
+        class="btn btn-primary">
+      Зарегистрироваться
+    </button>
+  </form>
+{% endblock %}
